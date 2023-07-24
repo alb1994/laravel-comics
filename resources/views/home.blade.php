@@ -8,56 +8,32 @@
     <title>Laravel</title>
 
     <!-- Fonts -->
-    <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    @vite('resources/js/app.js')
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
 </head>
 
 <body>
-    <header>
+    @include('partials/header')
+    <main>
         <div class="container">
             <div class="row">
-                <div class="col-3">
-                        <img src="{{Vite::asset('resources/img/dc-logo.png')}}">
+                @foreach($comics as $comic)
+                <div class="col-12">
+                    {{ $comic['series'] }}
                 </div>
-                <div class="col-9">
-                <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" href="#">Features</a>
-        <a class="nav-link" href="#">Pricing</a>
-        <a class="nav-link" href="#">Pricing</a>
-        <a class="nav-link" href="#">Pricing</a>
-        <a class="nav-link" href="#">Pricing</a>
-        <a class="nav-link" href="#">Pricing</a>
-        <a class="nav-link" href="#">Pricing</a>
-        <a class="nav-link" href="#">Pricing</a>
-        <a class="nav-link" href="#">Pricing</a>
-        <a class="nav-link" href="#">Pricing</a>
-        <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-      </div>
-    </div>
-  </div>
-</nav>
-
-
-                </div>
+                @endforeach
             </div>
         </div>
-
-    </header>
-    <main>
-
     </main>
     <footer>
 
     </footer>
+
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
 </body>
 
 </html>
