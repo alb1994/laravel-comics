@@ -16,7 +16,22 @@ use PhpParser\Node\Stmt\Return_;
 
 
 
+// Definizione di una route con il metodo GET. Quando un utente accede all'URL principale ('/'), questa funzione verrà eseguita.
 route::get('/', function() {
+
+    // Recupero dei dati dei fumetti dal file di configurazione utilizzando la chiave 'comics.comic'.
     $comics = config('comics.comic');
+    // La funzione 'compact' viene utilizzata per creare un array associativo in cui il nome della chiave e della variabile sono gli stessi ('comics').
+    // Ciò consentirà alla vista 'home' di accedere ai dati dei fumetti.
     return view('home', compact('comics'));
-})->name('homepage');
+
+});
+
+
+route::get('/comics/{comi}', function($id){
+    $comics = config('comics.comic');
+
+    $comic = $comics[$id];
+
+    return view('comics.show', compact('comic'));
+})->name('comics.show');
